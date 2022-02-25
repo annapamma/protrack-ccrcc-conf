@@ -25,7 +25,8 @@ export default function generateHeatmap(
 
     Object.entries(categoryTracks)
       .filter(([category,]) => category !== 'Numerical')
-      .forEach(([, tracks], i) => {
+      .forEach(([category, tracks], i) => {
+        if (tracks.length === 0) { return }
         categorical = [
           ...categorical, 
           ...generateCategoricalTrackGroup({
@@ -37,7 +38,7 @@ export default function generateHeatmap(
           fillerObj({
             i: i+1,
             samples: sampleOrder,
-            marker: '-'
+            marker: '-',
           })
         ]
       }
@@ -54,7 +55,7 @@ export default function generateHeatmap(
       fillerObj({
         i: 1,
         samples: sampleOrder,
-        marker: '#'
+        marker: '#',
       })
     ]
         
@@ -94,7 +95,6 @@ export default function generateHeatmap(
       ...continuousClinical,
       ...categorical,
     ]
-
 
     data.forEach((track) => {
       if (track) {

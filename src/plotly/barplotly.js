@@ -97,7 +97,7 @@ export default function generateBarplot(
         margin: {
             b: 10,
             t: 20,
-            l: 20,
+            l: 40,
             r: 10,
         },
         legend: {

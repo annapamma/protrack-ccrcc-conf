@@ -87,8 +87,8 @@ export default new Vuex.Store({
     SET_BOXPLOT_GENES(state, { boxplotGenes }) { state.boxplotGenes = boxplotGenes },
     SET_BOXPLOT_VIEW(state, { boxplotView }) { state.boxplotView = boxplotView },
     SET_CATEGORY_TRACKS_FILTERED(state, { categoryTracksFiltered }) { 
-      console.log('categoryTracksFiltered', categoryTracksFiltered)
-      state.categoryTracksFiltered = categoryTracksFiltered },
+      state.categoryTracksFiltered = deepClone(categoryTracksFiltered)
+    },
     SET_K_GENE_V_TRACKS(state, { view, k_gene_v_tracks }) {
       state[`${view}_k_gene_v_tracks`] = k_gene_v_tracks
     },

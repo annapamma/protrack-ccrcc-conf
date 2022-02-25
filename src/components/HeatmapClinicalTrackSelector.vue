@@ -42,7 +42,6 @@
                         {{track}}
                     </span> 
                     <v-btn 
-                        v-if="shownTracks.length > 1" 
                         icon 
                         x-small 
                         @click="removeTrack(track)"
@@ -115,10 +114,6 @@ export default {
         },
         addAll() { this.shownTracks = [...this.tracks] },
         clearAll() { this.shownTracks = [] },
-        setClinicalTracks() {
-            console.log('click')
-            // this.$store.dispatch('setClinicalTracks', {})
-        },
         removeTrack(track) { 
             const res = this.shownTracks.filter(el => el !== track) 
             this.shownTracks = res

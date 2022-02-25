@@ -32,11 +32,13 @@ export default {
     name: "heatmap-legend",
 
     computed: {
-        categoryTracks() { return this.$store.state.categoryTracks },
-        otherCategories() { return Object.keys(this.$store.state.categoryTracks)
-          .filter(track => track !== 'Ungrouped' && track !== 'Numerical' )
+        categoryTracks() { return this.$store.state.categoryTracksFiltered },
+        otherCategories() {
+          return Object.entries(this.$store.state.categoryTracksFiltered)
+            .filter(([category, tracks]) => category !== 'Ungrouped' && category !== 'Numerical' && tracks.length > 0)
+            .map(([category, tracks]) => category)
         },
-        ungrouped() { return this.$store.state.categoryTracks.Ungrouped },
+        ungrouped() { return this.$store.state.categoryTracksFiltered.Ungrouped },
         k_otherCategory_v_trackDetails() { 
           let res = {}
           this.otherCategories.forEach((otherCategory) => {
@@ -54,30 +56,40 @@ export default {
     }),
 
     mounted() {
-      let col1 = []
-      let col2 = []
-      Object.entries(this.trackDetails)
-        .filter(([name,]) => {
-          return this.ungrouped.includes(name)
-        }
-        ).forEach((track, i) => {
-          if (i % 2 === 0) {
-            col1.push(track)
-          } else {
-            col2.push(track)
-          }
-        })
-      
-      Object.entries(this.k_otherCategory_v_trackDetails)
-        .forEach((track, i) => {
-          // if (i % 2 === 0) {
-            col2.push(track)
-          // } else {
-            // col2.push(track)
-          // }
-        })
-      this.col1 = Object.fromEntries(col1)
-      this.col2 = Object.fromEntries(col2)
+      this.createColLists()
+    },
+
+    watch: {
+      categoryTracks() { this.createColLists() },
+    },
+
+    methods: {
+      createColLists() {
+          let col1 = []
+          let col2 = []
+          Object.entries(this.trackDetails)
+            .filter(([name,]) => {
+              return this.ungrouped.includes(name)
+            }
+            ).forEach((track, i) => {
+              if (i % 2 === 0) {
+                col1.push(track)
+              } else {
+                col2.push(track)
+              }
+            })
+          
+          Object.entries(this.k_otherCategory_v_trackDetails)
+            .forEach((track, i) => {
+              // if (i % 2 === 0) {
+                col2.push(track)
+              // } else {
+                // col2.push(track)
+              // }
+            })
+          this.col1 = Object.fromEntries(col1)
+          this.col2 = Object.fromEntries(col2)
+      }
     }
 }
 </script>
