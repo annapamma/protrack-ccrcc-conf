@@ -1,0 +1,1 @@
+export default {"A1BG": true, "A1CF": true, "A2M": true, "A4GALT": true, "AAAS": true, "AACS": true, "AADAC": true, "AADAT": true, "AAGAB": true, "AAK1": true, "A2ML1": true, "A2MP1": true, "A3GALT2": true, "A4GNT": true, "AAMDC": true, "AARS1": true, "AARS2": true, "ABCA1": true, "ABCA12": true, "ABCA6": true}
