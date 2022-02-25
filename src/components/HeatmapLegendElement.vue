@@ -57,6 +57,7 @@ export default {
                 'black--text': false,
                 'white--text': false,
                 'disable-events': !this.trackIsUngrouped,
+                'cursor-not-allowed': !this.trackIsUngrouped,
             }
             if (!el.value || !this.shownFeatures.includes(el.value)) { 
                 res['black--text'] = true 
@@ -98,6 +99,6 @@ export default {
 }
 
 .disable-events {
-  pointer-events: none
+  pointer-events: none;
 }
 </style>

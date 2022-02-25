@@ -18,6 +18,14 @@ Object.keys(trackDetails).forEach(series => {
   trackDetails_k_label_v_value[series] = res
 })
 
+
+let k_category_v_trackSelected = {}
+Object.entries(categoryTracks)
+  .forEach(([category, tracks]) => {
+    k_category_v_trackSelected[category] = 
+      Object.fromEntries(tracks.map(track => [track, true]))
+  })
+
 import { 
   getTrackData,
   getTracks, 
@@ -38,6 +46,7 @@ export default new Vuex.Store({
     Boxplot_k_gene_v_tracks: null,
     Boxplot_k_track_v_data: null,
     categoryTracks: categoryTracks,
+    categoryTracksFiltered: {...categoryTracks},
     clinicalTracks: null,
     heatmapGenes: null,
     heatmapLockTracks: true,
@@ -45,6 +54,7 @@ export default new Vuex.Store({
     heatmapTracksToLock: ['cohort'],
     Heatmap_k_gene_v_tracks: null,
     Heatmap_k_track_v_data: null,
+    k_category_v_trackSelected,
     loaderHeatmap: false,
     sampleDashboardGraphs: [
       ...categoryTracks.Ungrouped,
@@ -76,6 +86,9 @@ export default new Vuex.Store({
     SET_BOXPLOT_CATEGORY2(state, { boxplotCategory2 }) { state.boxplotCategory2 = boxplotCategory2 },
     SET_BOXPLOT_GENES(state, { boxplotGenes }) { state.boxplotGenes = boxplotGenes },
     SET_BOXPLOT_VIEW(state, { boxplotView }) { state.boxplotView = boxplotView },
+    SET_CATEGORY_TRACKS_FILTERED(state, { categoryTracksFiltered }) { 
+      console.log('categoryTracksFiltered', categoryTracksFiltered)
+      state.categoryTracksFiltered = categoryTracksFiltered },
     SET_K_GENE_V_TRACKS(state, { view, k_gene_v_tracks }) {
       state[`${view}_k_gene_v_tracks`] = k_gene_v_tracks
     },
@@ -136,6 +149,7 @@ export default new Vuex.Store({
     setBoxplotGene(store, { boxplotGene }) { store.commit('SET_BOXPLOT_GENE', { boxplotGene }) },
     setBoxplotDataType(store, { boxplotDataType }) { store.commit('SET_BOXPLOT_DATA_TYPE', { boxplotDataType }) },
     setBoxplotView(store, { boxplotView }) { store.commit('SET_BOXPLOT_VIEW', { boxplotView }) },
+    setCategoryTracksFiltered(store, { categoryTracksFiltered }) { store.commit('SET_CATEGORY_TRACKS_FILTERED', { categoryTracksFiltered }) },
     setHeatmapLockTracks(store, { heatmapLockTracks }) { store.commit('SET_HEATMAP_LOCK_TRACKS', { heatmapLockTracks }) },
     setHeatmapTracksToLock(store, { heatmapTracksToLock }) { store.commit('SET_HEATMAP_TRACKS_TO_LOCK', { heatmapTracksToLock }) },
     setHeatmapShownDataTypes(store, { heatmapShownDataTypes }) { store.commit('SET_HEATMAP_SHOWN_DATA_TYPES', { heatmapShownDataTypes }) },

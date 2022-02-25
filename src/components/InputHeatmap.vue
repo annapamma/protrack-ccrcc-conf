@@ -79,7 +79,7 @@ export default {
     },
     
     data: () => ({
-      tab: 'tab-1',
+      tab: 'tab-2',
     }),
 
 

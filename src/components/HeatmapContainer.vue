@@ -17,7 +17,7 @@ export default {
     props: ['view'],
 
     computed: {
-        categoryTracks() { return this.$store.state.categoryTracks },
+        categoryTracks() { return this.$store.state.categoryTracksFiltered },
         // heatmapShownDataTypes() { return this.$store.state.heatmapShownDataTypes },
         k_gene_v_tracks() { return this.$store.state[`${this.view}_k_gene_v_tracks`] },
         k_track_v_data() { return this.$store.state[`${this.view}_k_track_v_data`] },
