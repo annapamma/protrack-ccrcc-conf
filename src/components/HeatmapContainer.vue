@@ -18,7 +18,7 @@ export default {
 
     computed: {
         categoryTracks() { return this.$store.state.categoryTracksFiltered },
-        // heatmapShownDataTypes() { return this.$store.state.heatmapShownDataTypes },
+        heatmapShownDataTypes() { return this.$store.state.heatmapShownDataTypes },
         k_gene_v_tracks() { return this.$store.state[`${this.view}_k_gene_v_tracks`] },
         k_track_v_data() { return this.$store.state[`${this.view}_k_track_v_data`] },
         sampleMeta() { return this.$store.state.sampleMeta },
@@ -28,7 +28,7 @@ export default {
 
     watch: {
       categoryTracks() { this.renderHeatmap() },
-      // heatmapShownDataTypes() { this.renderHeatmap() },
+      heatmapShownDataTypes() { this.renderHeatmap() },
       k_gene_v_tracks() { this.renderHeatmap() },
       k_track_v_data() { this.renderHeatmap() },
       sampleMeta() { this.renderHeatmap() },
@@ -45,7 +45,7 @@ export default {
             k_track_v_data: this.k_track_v_data,
             sampleMeta: this.sampleMeta,
             sampleOrder: this.sampleOrderFiltered,
-          //   shownDataTypes: this.heatmapShownDataTypes,
+            shownDataTypes: this.heatmapShownDataTypes,
             trackDetails: this.trackDetails,
           }
         )

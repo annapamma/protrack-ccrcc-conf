@@ -39,9 +39,8 @@ export default {
     },
 
     mounted() { 
-        this.dataTypes = this.$store.state.heatmapShownDataTypes
-        this.selected = this.$store.state.heatmapShownDataTypes
-
+        this.dataTypes = [...this.$store.state.heatmapDataTypes]
+        this.selected = [...this.$store.state.heatmapShownDataTypes]
     },
 }
 </script>

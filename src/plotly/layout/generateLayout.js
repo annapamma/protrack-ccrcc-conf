@@ -13,7 +13,7 @@ export default function generateLayout(data) {
                 l: Math.max(...yAxisLabels.map(y => y.length)) * 8,
                 // r: 50,
             },
-            height: yAxisLabels.length * 20 < 620 ? 620 : yAxisLabels.length * 20,
+            height: yAxisLabels.length * 20 < 620 ? 620 : yAxisLabels.length * 12,
             showlegend: true,
             legend: {
                 traceorder: 'normal',

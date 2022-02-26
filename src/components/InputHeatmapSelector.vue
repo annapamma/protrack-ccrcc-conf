@@ -31,6 +31,8 @@ export default {
     computed: {
         available() { return this.$store.state.available },
         heatmapGenes() { 
+          if (!this.heatmapGeneInput && 
+            this.heatmapGeneInput.length === 0) { return [] }
           return this.heatmapGeneInput
             .split('\n')
             .map(gene => gene.toUpperCase())

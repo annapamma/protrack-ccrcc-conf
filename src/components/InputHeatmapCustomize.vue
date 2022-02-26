@@ -19,6 +19,15 @@
           <heatmap-clinical-track-selector-container />
         </v-expansion-panel-content>
       </v-expansion-panel>
+
+      <v-expansion-panel>
+        <v-expansion-panel-header>
+           Hide/show molecular data types
+        </v-expansion-panel-header>
+        <v-expansion-panel-content>
+          <heatmap-data-type-selector />
+        </v-expansion-panel-content>
+      </v-expansion-panel>
       <!-- <v-expansion-panel>
         <v-expansion-panel-header>
           Hide/show data types
@@ -34,13 +43,14 @@
 
 <script>
 import HeatmapSortByTrack from './HeatmapSortByTrack.vue'
-// import HeatmapDataTypeSelector from './HeatmapDataTypeSelector.vue'
+import HeatmapDataTypeSelector from './HeatmapDataTypeSelector.vue'
 import HeatmapClinicalTrackSelectorContainer from './HeatmapClinicalTrackSelectorContainer.vue'
 
 export default {
     components: { 
       HeatmapSortByTrack,
       HeatmapClinicalTrackSelectorContainer,
+      HeatmapDataTypeSelector,
     },
     
     name: "input-heatmap-customize",
@@ -49,7 +59,7 @@ export default {
     },
     
     data: () => ({
-      panel: [0, 1], 
+      panel: [0, 2], 
     }),
 
     methods: {

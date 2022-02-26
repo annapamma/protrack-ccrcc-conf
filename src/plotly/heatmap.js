@@ -12,12 +12,12 @@ export default function generateHeatmap(
     k_track_v_data,
     sampleMeta,
     sampleOrder,
-    // shownDataTypes,
+    shownDataTypes,
     trackDetails
   }
 ) {
     if (!sampleMeta) { return }
-
+    console.log('shownDataTypes', shownDataTypes)
     const Plotly = window.Plotly
     let molecular = []
 
@@ -64,13 +64,13 @@ export default function generateHeatmap(
     if (k_gene_v_tracks && k_track_v_data) {
       molecular = Object.entries(k_gene_v_tracks)
         .map(([gene, trackList], i) => {
-          const filteredTracks = trackList
-              // const filteredTracks = trackList.filter(track => {
-              //     const trackArr = track.split(' ')
-              //     const trackDataType = trackArr[1]
-              //     return shownDataTypes.includes(trackDataType)
-              // }
-            // )
+          // const filteredTracks = trackList
+              const filteredTracks = trackList.filter(track => {
+                  const trackArr = track.split(' ')
+                  const trackDataType = trackArr[1]
+                  return shownDataTypes.includes(trackDataType)
+              }
+            )
               return [                
                   fillerObj({
                           i: i+1,

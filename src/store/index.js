@@ -50,6 +50,7 @@ export default new Vuex.Store({
     clinicalTracks: null,
     heatmapGenes: null,
     heatmapLockTracks: true,
+    heatmapDataTypes: ['rna', 'proteo', 'phospho', 'glyco_glyco', 'phospho_glyco'],
     heatmapShownDataTypes: ['rna', 'proteo', 'phospho'],
     heatmapTracksToLock: ['cohort'],
     Heatmap_k_gene_v_tracks: null,
