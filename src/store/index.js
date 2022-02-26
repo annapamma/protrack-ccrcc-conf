@@ -37,8 +37,8 @@ export default new Vuex.Store({
   state: {
     available,
     barplotCategory: 'Sex',
-    boxplotCategory: 'Progression_Free_Survival',
-    boxplotCategory2: 'Gender',
+    boxplotCategory: 'Sex',
+    boxplotCategory2: 'cohort',
     boxplotGene: null,
     boxplotGenes: null,
     boxplotDataType: 'proteo',
@@ -74,10 +74,9 @@ export default new Vuex.Store({
     showText: true,
     trackDetails,
     trackDetails_k_label_v_value,
-    view: 'Heatmap',
-    // view: 'Boxplot',
+    // view: 'Heatmap',
+    view: 'Boxplot',
     views: ['Boxplot', 'Heatmap', 'Sample dashboard'],
-    // views: ['Boxplot', 'Heatmap', 'Sample dashboard'],
   },
   mutations: {
     SET_BARPLOT_CATEGORY(state, { barplotCategory }) { state.barplotCategory = barplotCategory },
@@ -141,6 +140,7 @@ export default new Vuex.Store({
       const trackRes = await Promise.all(trackPromises)
 
       const k_track_v_data = Object.fromEntries(trackRes)
+
       store.commit('SET_K_TRACK_V_DATA', { view, k_track_v_data })
       store.commit('SET_LOADING' , { loader: `loader${view}`, isLoading: false })
     },

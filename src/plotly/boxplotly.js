@@ -3,7 +3,6 @@ import trackDetails from "../refs/trackDetails"
 export default function generateBoxplot({
     k_track_v_data,
     divId,
-    responseCategory,
     sampleMeta,
     xAxisCategory,
     track,
@@ -14,62 +13,54 @@ export default function generateBoxplot({
 
     let category = xAxisCategory
     
-    let xAxisSamples = {}
+    let samplesX = {}
   
     Object.entries(sampleMeta).forEach(([sample, o]) => {
-        let label = o[xAxisCategory]
-        if (!(label in xAxisSamples)) {
-            xAxisSamples[label] = []
-        }
-        xAxisSamples[label].push(sample)
+        let label = o[category]
+        samplesX[sample] = label
     })
 
-    const yAxisCategory = responseCategory
-    let yAxisSamples = {}
-
-    Object.entries(sampleMeta).forEach(([sample, o]) => {
-        let label = o[yAxisCategory]
-        if (!(label in yAxisSamples)) {
-            yAxisSamples[label] = []
-        }
-        yAxisSamples[label].push(sample)
-    })
-
-    let data = trackDetails[xAxisCategory].map((o) => {
-        const xSamples = xAxisSamples[o.label]
-        let trace = {
-          x: [],
-          y: [],
-          name: o.label.length > 0 ? o.label : 'Missing',
-          marker: { color: o.label.length > 0 ? o.color : '#808080' },
-          type: 'box',
-        }
-
-        trackDetails[yAxisCategory].forEach((yAxisOpt) => {
-          const yLabel = yAxisOpt.label
-          const ySamples = yAxisSamples[yLabel]
-          const overlapSamples = ySamples.filter(ySample => xSamples.includes(ySample))
-          overlapSamples.forEach((oSample) => {
-            trace.x.push(yLabel.length > 0 ? yLabel : 'Missing')
-            trace.y.push(k_track_v_data[track][oSample])
-          })
-        })
-
-        return trace
-      })
-    
-    let title = ''
-    if (yAxisCategory !== xAxisCategory) {
-      title = `${yAxisCategory}<br>stratified by<br>${xAxisCategory}`
-    } else {
-      title = yAxisCategory
+    const trackData = k_track_v_data[track]
+    let traceTumor = {
+      x: [],
+      y: [],
+      name: 'Tumor',
+      marker: {color: '#1E88E5'},
+      type: 'box',
+      boxpoints: 'all',
+      pointpos: 0,
+    }
+    let traceNormal = {
+      x: [],
+      y: [],
+      name: 'Normal',
+      marker: {color: '#FFC107'},
+      type: 'box',
+      boxpoints: 'all',
+      pointpos: 0,
     }
 
+    Object.entries(trackData).forEach(([s, val]) => {
+      const sampleArr = s.split('-')
+      const tumor = sampleArr[sampleArr.length - 1] === 'T'
+      const sample = sampleArr.slice(0, 2).join('-')
+      const x = samplesX[sample]
+      if (tumor) {
+        traceTumor.y.push(val)
+        traceTumor.x.push(x)
+      } else {
+        traceNormal.y.push(val)
+        traceNormal.x.push(x)
+      }
+    })
+
+    let data = [traceTumor, traceNormal]
+    
     const layout = {
       title: track,
       xaxis: {
         automargin: true,
-        title,
+        title: xAxisCategory,
       },
       yaxis: {
         title: '',
@@ -77,7 +68,7 @@ export default function generateBoxplot({
       legend: {
         title: 'test?'
       },
-      boxmode: category !== responseCategory ? 'group' : 'box',
+      boxmode: 'group',
     }
 
     const config = {

@@ -4,15 +4,14 @@
     <main class="main">
         <input-container class="input-container-main" />
         <sample-dashboard :style="showSampleDashboard" view="SampleDashboard" /> 
-       <heatmap-container :style="showHeatmap" view="Heatmap"  />
-        <!--  <boxplot-container :style="showBoxplot" view="Boxplot" />-->
+        <heatmap-container :style="showHeatmap" view="Heatmap"  />
+        <boxplot-container :style="showBoxplot" view="Boxplot" />
     </main>
   </v-app>
 </template>
 
 <script>
-// import BoxplotContainer from './components/BoxplotContainer.vue';
-// import Demo from './components/Demo.vue';
+import BoxplotContainer from './components/BoxplotContainer.vue';
 import HeatmapContainer from './components/HeatmapContainer.vue';
 import InputContainer from './components/InputContainer.vue';
 import Introduction from './components/Introduction.vue';
@@ -22,7 +21,7 @@ export default {
   name: 'App',
 
   components: {
-    // BoxplotContainer,
+    BoxplotContainer,
     // Demo,
     HeatmapContainer,
     InputContainer,

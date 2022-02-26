@@ -64,7 +64,6 @@ export default function generateHeatmap(
     if (k_gene_v_tracks && k_track_v_data) {
       molecular = Object.entries(k_gene_v_tracks)
         .map(([gene, trackList], i) => {
-          // const filteredTracks = trackList
               const filteredTracks = trackList.filter(track => {
                   const trackArr = track.split(' ')
                   const trackDataType = trackArr[1]

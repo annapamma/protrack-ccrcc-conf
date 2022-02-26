@@ -2,16 +2,16 @@
     <div class="input-container">
         <view-selector />
         <input-sample-dashboard :style="showSampleDashboard" />
-       <input-heatmap :style="showHeatmap" />
-         <!-- <input-boxplot :style="showBoxplot" />
-        <input-demo :style="showDemo" /> -->
+        <input-heatmap :style="showHeatmap" />
+        <input-boxplot :style="showBoxplot" />
+         <!-- <input-demo :style="showDemo" /> -->
         <!-- <input-scatterplot :style="showScatterplot" />
         <input-iprofun :style="showIprofun" /> -->
     </div>
 </template>
 
 <script>
-// import InputBoxplot from './InputBoxplot.vue'
+import InputBoxplot from './InputBoxplot.vue'
 // import InputDemo from './InputDemo.vue'
 import InputHeatmap from './InputHeatmap.vue'
 import InputSampleDashboard from './InputSampleDashboard.vue'
@@ -20,7 +20,7 @@ import ViewSelector from './ViewSelector.vue'
 
 export default {
     components: {
-        // InputBoxplot,
+        InputBoxplot,
         // InputDemo,
         InputHeatmap,
         InputSampleDashboard,
