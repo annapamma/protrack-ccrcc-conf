@@ -1,5 +1,12 @@
 <template>
   <div class="heatmap-clinical-track-selector-container">
+    <v-btn 
+        elevation=1 
+        class="yellow lighten-4 mt-1" 
+        :disabled="!changed"
+        @click="setClinicalTracks">
+        Redraw
+    </v-btn>
     <div>
         <div v-for="tracks, category in categoryTracks" :key="category">
             <heatmap-clinical-track-selector 
@@ -9,12 +16,6 @@
             />
         </div>
     </div>
-    <v-btn 
-        elevation=1 
-        class="yellow lighten-4 mt-4" 
-        @click="setClinicalTracks">
-        Redraw
-    </v-btn>
   </div>
 </template>
 
@@ -34,16 +35,16 @@ export default {
     },
 
     data: () => ({
+        changed: null,
+        loaded: false,
         categoryTracksFiltered: {},
         lockTracks: [],
         selected: [],
     }),
 
-    watch: {
-    },
-
     methods: {
         setClinicalTracks() {
+            this.changed = false
             this.$store.dispatch(
                 'setCategoryTracksFiltered', 
                 { categoryTracksFiltered: this.categoryTracksFiltered }
@@ -51,12 +52,14 @@ export default {
         },
         updateparent({ category, shownTracks }) {
             this.categoryTracksFiltered[category] = shownTracks
+            this.changed = true
         }
     },
 
     mounted() { 
         this.filteredCategoryTracks = {...this.categoryTracks}
     },
+
 }
 </script>
 
