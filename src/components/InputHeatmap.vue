@@ -57,6 +57,10 @@ export default {
 
     computed: {
         available() { return this.$store.state.available },
+        tab: {
+          get() { return this.$store.state.heatmapTab },
+          set(tab) { this.$store.dispatch('setHeatmapTab', { heatmapTab: tab }) },
+        }
         // heatmapGenes() { 
         //   return this.heatmapGeneInput
         //     .split('\n')
@@ -79,7 +83,7 @@ export default {
     },
     
     data: () => ({
-      tab: 'tab-1',
+      // tab: 'tab-1',
     }),
 
 

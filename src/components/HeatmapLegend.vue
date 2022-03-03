@@ -67,6 +67,14 @@ export default {
       createColLists() {
           let col1 = []
           let col2 = []
+                    Object.entries(this.k_otherCategory_v_trackDetails)
+            .forEach((track, i) => {
+              // if (i % 2 === 0) {
+                col2.push(track)
+              // } else {
+                // col2.push(track)
+              // }
+            })
           Object.entries(this.trackDetails)
             .filter(([name,]) => {
               return this.ungrouped.includes(name)
@@ -78,15 +86,7 @@ export default {
                 col2.push(track)
               }
             })
-          
-          Object.entries(this.k_otherCategory_v_trackDetails)
-            .forEach((track, i) => {
-              // if (i % 2 === 0) {
-                col2.push(track)
-              // } else {
-                // col2.push(track)
-              // }
-            })
+
           this.col1 = Object.fromEntries(col1)
           this.col2 = Object.fromEntries(col2)
       }
