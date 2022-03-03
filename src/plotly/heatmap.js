@@ -17,7 +17,7 @@ export default function generateHeatmap(
   }
 ) {
     if (!sampleMeta) { return }
-    console.log('shownDataTypes', shownDataTypes)
+
     const Plotly = window.Plotly
     let molecular = []
 
@@ -99,6 +99,7 @@ export default function generateHeatmap(
       if (track) {
           track.z.splice(0,0,[])
           track.y.splice(0,0,'')
+          track.xgap = 0.2
       }
     })
 

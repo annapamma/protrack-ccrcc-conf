@@ -50,7 +50,7 @@ export default {
 
         },
         getBackgroundColor(el) {
-            return this.shownFeatures.includes(el.value) ? el.color : '#ffffff'
+            return this.shownFeatures.includes(el.value) ? hexToRgbA(el.color) : '#ffffff'
         },
         getTextColor(el) {
             let res = {
@@ -59,11 +59,12 @@ export default {
                 'disable-events': !this.trackIsUngrouped,
                 'cursor-not-allowed': !this.trackIsUngrouped,
             }
-            if (!el.value || !this.shownFeatures.includes(el.value)) { 
-                res['black--text'] = true 
-            } else {
-                res['white--text'] = true
-            }            
+            // if (!el.value || !this.shownFeatures.includes(el.value)) { 
+            //     res['black--text'] = true 
+            // } else {
+            //     res['white--text'] = true
+            // }            
+            res['black--text'] = true 
 
             return res
         },
@@ -85,6 +86,20 @@ export default {
     }
 
 }
+
+function hexToRgbA(hex){
+    var c;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x'+c.join('');
+        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',0.7)';
+    }
+    throw new Error('Bad Hex');
+}
+
 </script>
 
 <style>
