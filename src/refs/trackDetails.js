@@ -57,10 +57,10 @@ export default {
     { value: 8002, label: "False", color: "#ebebeb", show: true },
   ],
   grade: [
-    { value: 9001, label: "G1", color: "#ffe169", show: true },
-    { value: 9002, label: "G2", color: "#edc531", show: true },
-    { value: 9003, label: "G3", color: "#", show: true },
-    { value: 9004, label: "G4", color: "#", show: true },
+    { value: 9001, label: "G1", color: "#dcebca", show: true },
+    { value: 9002, label: "G2", color: "#b5c99a", show: true },
+    { value: 9003, label: "G3", color: "#849669", show: true },
+    { value: 9004, label: "G4", color: "#606f49", show: true },
     { value: 9005, label: "GX", color: "#ffffff", show: true },
   ],
   BMI: [
