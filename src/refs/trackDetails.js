@@ -9,6 +9,7 @@ export default {
     { value: 2003, label: "nonCCRCC", color: "#D81B60", show: true },
   ],
   tumorClass: [
+    { value: 3000, label: "ccRCC", color: "#29ECEA", show: true },
     { value: 3001, label: "AML", color: "#F7CBAD", show: true },
     { value: 3002, label: "BHD", color: "#F3B084", show: true },
     { value: 3003, label: "ChRCC", color: "#CB93FF", show: true },
@@ -24,7 +25,6 @@ export default {
     { value: 3013, label: "PRCC type1", color: "#FFFF0B", show: true },
     { value: 3014, label: "PUC", color: "#4A0D4B", show: true },
     { value: 3015, label: "TRCC", color: "#FFE799", show: true },
-    { value: 3016, label: "ccRCC", color: "#29ECEA", show: true },
     { value: 3017, label: "unRCC", color: "#DC143C", show: true },
   ],
   Age: [

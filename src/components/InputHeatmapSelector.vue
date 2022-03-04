@@ -78,6 +78,7 @@ export default {
     },
 
     mounted() { 
+      this.heatmapGeneInput = ['CA9', 'ANGPTL4', 'VEGFA', 'EGLN3', 'PLVAP', 'ENPP3', 'SLC6A3'].join('\n')
       this.submitHeatmapGenes() 
     },
 }

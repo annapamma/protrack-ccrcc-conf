@@ -90,7 +90,10 @@ export default {
       }
     },
 
-    mounted() { this.renderHeatmap() }
+    mounted() { 
+      this.$store.dispatch('sortSamples', { asc: true, series: 'tumorClass' })
+      this.renderHeatmap() 
+    }
 }
 </script>
 
