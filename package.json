@@ -11,6 +11,8 @@
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "firebase": "^8.6.2",
+    "jstat": "^1.9.5",
+    "ttest": "^4.0.0",
     "vue": "^2.6.11",
     "vue-async-computed": "^3.9.0",
     "vue-drag-sortable": "^0.2.2",

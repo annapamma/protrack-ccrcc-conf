@@ -75,8 +75,8 @@ export default new Vuex.Store({
     showText: true,
     trackDetails,
     trackDetails_k_label_v_value,
-    view: 'Heatmap',
-    // view: 'Boxplot',
+    // view: 'Heatmap',
+    view: 'Boxplot',
     views: ['Boxplot', 'Heatmap', 'Sample dashboard'],
   },
   mutations: {
